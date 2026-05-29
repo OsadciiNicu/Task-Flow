@@ -67,7 +67,7 @@ ul {
 }
 
 /* =============================================
-   NAVBAR (fixed, cu blur și toggle mobil)
+   NAVBAR 
    ============================================= */
 .navbar {
   position: fixed;
@@ -224,7 +224,7 @@ ul {
 }
 
 /* =============================================
-   HERO (cu fundal, bloburi, grid, stats)
+   HERO 
    ============================================= */
 .hero {
   min-height: 100vh;
@@ -392,7 +392,7 @@ ul {
 }
 
 /* =============================================
-   BUTOANE (primar și secundar)
+   BUTOANE 
    ============================================= */
 .btn-primary {
   display: inline-flex;
@@ -436,7 +436,7 @@ ul {
 }
 
 /* =============================================
-   FEATURES (grid 3 coloane, carduri animate)
+   FEATURES 
    ============================================= */
 .features {
   padding: 96px 24px;

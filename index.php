@@ -1,91 +1,46 @@
 <?php
 session_start();
-$lang = 'ro';
-
-$translations = [
-  'ro' => [
-    'title' => 'TaskFlow — Lista ta de sarcini',
-    'nav_home' => 'Acasă',
-    'nav_about' => 'Despre',
-    'nav_features' => 'Funcționalități',
-    'nav_dashboard' => 'Dashboard',
-    'nav_contact' => 'Contact',
-    'nav_login' => 'Autentificare',
-    'nav_register' => 'Înregistrare',
-    'nav_logout' => 'Deconectare',
-    'hero_label' => 'Organizează-ți ziua',
-    'hero_title' => 'Sarcinile tale,<br>sub control.',
-    'hero_sub' => 'TaskFlow te ajută să îți gestionezi task-urile zilnice simplu și eficient. Adaugă, bifează, organizează — totul într-un singur loc.',
-    'hero_btn_start' => 'Începe acum',
-    'hero_btn_about' => 'Află mai mult',
-    'stat_users' => 'Utilizatori',
-    'stat_tasks' => 'Sarcini completate',
-    'stat_days' => 'Zile de productivitate',
-    'features_label' => 'Ce oferim',
-    'features_title' => 'Funcționalități principale',
-    'f1_title' => 'Adaugă sarcini rapid',
-    'f1_desc' => 'Creează task-uri noi în câteva secunde, cu titlu și descriere.',
-    'f2_title' => 'Marchează progresul',
-    'f2_desc' => 'Bifează sarcinile completate și urmărește-ți evoluția zilnică.',
-    'f3_title' => 'Organizare personală',
-    'f3_desc' => 'Fiecare utilizator are propria listă privată, accesibilă după autentificare.',
-    'f4_title' => 'Dark & Light Mode',
-    'f4_desc' => 'Alege tema preferată pentru o experiență vizuală confortabilă.',
-    'f5_title' => 'Multilingv',
-    'f5_desc' => 'Interfața disponibilă în română, engleză și rusă.',
-    'f6_title' => 'Disponibil Oriunde',
-    'f6_desc' => 'Accesează TaskFlow de pe orice dispozitiv, oricând ai nevoie.',
-    'about_label' => 'Despre TaskFlow',
-    'about_title' => 'Productivitate maximă,<br>fără complicații.',
-    'about_text' => 'TaskFlow este o aplicație web modernă creată pentru cei care vor să fie mereu organizați. Gestionează sarcinile zilnice cu ușurință, urmărește progresul și bucură-te de o interfață clară, rapidă și sigură — oriunde te-ai afla.',
-    'footer_copy' => '© 2025 TaskFlow. Toate drepturile rezervate.',
-    'logged_as' => 'Conectat ca',
-  ],
-];
-
-$t = $translations[$lang];
 ?>
 <!DOCTYPE html>
-<html lang="<?= $lang ?>" data-theme="light">
+<html lang="ro" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?= $t['title'] ?></title>
+  <title>TaskFlow — Lista ta de sarcini</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
+ 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="index.php" class="nav-logo">
       <span class="logo-icon">✦</span> TaskFlow
     </a>
-
+ 
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-
+ 
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.php" class="active"><?= $t['nav_home'] ?></a></li>
-      <li><a href="#about"><?= $t['nav_about'] ?></a></li>
-      <li><a href="#features"><?= $t['nav_features'] ?></a></li>
+      <li><a href="index.php" class="active">Acasă</a></li>
+      <li><a href="#about">Despre</a></li>
+      <li><a href="#features">Funcționalități</a></li>
       <?php if (isset($_SESSION['user'])): ?>
-        <li><a href="dashboard.php"><?= $t['nav_dashboard'] ?></a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
       <?php endif; ?>
-      <li><a href="contact.php"><?= $t['nav_contact'] ?></a></li>
+      <li><a href="contact.php">Contact</a></li>
       <?php if (isset($_SESSION['user'])): ?>
-        <li><a href="logout.php" class="btn-nav logout"><?= $t['nav_logout'] ?></a></li>
+        <li><a href="logout.php" class="btn-nav logout">Deconectare</a></li>
       <?php else: ?>
-        <li><a href="login.php" class="btn-nav"><?= $t['nav_login'] ?></a></li>
-        <li><a href="register.php" class="btn-nav primary"><?= $t['nav_register'] ?></a></li>
+        <li><a href="login.php" class="btn-nav">Autentificare</a></li>
+        <li><a href="register.php" class="btn-nav primary">Înregistrare</a></li>
       <?php endif; ?>
     </ul>
-
+ 
     <div class="nav-controls">
-      <!-- Theme toggle -->
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span class="icon-sun">☀</span>
         <span class="icon-moon">☾</span>
@@ -93,7 +48,7 @@ $t = $translations[$lang];
     </div>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
@@ -102,63 +57,83 @@ $t = $translations[$lang];
     <div class="hero-grid"></div>
   </div>
   <div class="hero-content">
-    <span class="hero-label"><?= $t['hero_label'] ?></span>
-    <h1 class="hero-title"><?= $t['hero_title'] ?></h1>
-    <p class="hero-sub"><?= $t['hero_sub'] ?></p>
+    <span class="hero-label">Organizează-ți ziua</span>
+    <h1 class="hero-title">Sarcinile tale,<br>sub control.</h1>
+    <p class="hero-sub">TaskFlow te ajută să îți gestionezi task-urile zilnice simplu și eficient. Adaugă, bifează, organizează — totul într-un singur loc.</p>
     <div class="hero-actions">
       <a href="<?= isset($_SESSION['user']) ? 'dashboard.php' : 'register.php' ?>" class="btn-primary">
-        <?= $t['hero_btn_start'] ?> →
+        Începe acum →
       </a>
-      <a href="#about" class="btn-ghost"><?= $t['hero_btn_about'] ?></a>
+      <a href="#about" class="btn-ghost">Află mai mult</a>
     </div>
-
+ 
     <?php if (isset($_SESSION['user'])): ?>
     <div class="user-pill">
       <span class="user-dot"></span>
-      <?= $t['logged_as'] ?>: <strong><?= htmlspecialchars($_SESSION['user']['username']) ?></strong>
+      Conectat ca: <strong><?= htmlspecialchars($_SESSION['user']['username']) ?></strong>
     </div>
     <?php endif; ?>
   </div>
-
+ 
   <!-- Stats -->
   <div class="stats-bar">
     <div class="stat-item">
       <span class="stat-num" data-target="128">0</span>
-      <span class="stat-label"><?= $t['stat_users'] ?></span>
+      <span class="stat-label">Utilizatori</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
       <span class="stat-num" data-target="3420">0</span>
-      <span class="stat-label"><?= $t['stat_tasks'] ?></span>
+      <span class="stat-label">Sarcini completate</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
       <span class="stat-num" data-target="365">0</span>
-      <span class="stat-label"><?= $t['stat_days'] ?></span>
+      <span class="stat-label">Zile de productivitate</span>
     </div>
   </div>
 </section>
-
+ 
 <!-- FEATURES -->
 <section class="features" id="features">
   <div class="section-container">
-    <span class="section-label"><?= $t['features_label'] ?></span>
-    <h2 class="section-title"><?= $t['features_title'] ?></h2>
+    <span class="section-label">Ce oferim</span>
+    <h2 class="section-title">Funcționalități principale</h2>
     <div class="features-grid">
-      <?php
-      $icons = ['📝','✅','🔒','🌙','🌐','🚀'];
-      $keys = ['f1','f2','f3','f4','f5','f6'];
-      foreach($keys as $i => $k): ?>
-      <div class="feature-card" style="--delay: <?= $i * 0.1 ?>s">
-        <span class="feature-icon"><?= $icons[$i] ?></span>
-        <h3><?= $t[$k.'_title'] ?></h3>
-        <p><?= $t[$k.'_desc'] ?></p>
+      <div class="feature-card" style="--delay:0s">
+        <span class="feature-icon">📝</span>
+        <h3>Adaugă sarcini rapid</h3>
+        <p>Creează task-uri noi în câteva secunde, cu titlu și descriere.</p>
       </div>
-      <?php endforeach; ?>
+      <div class="feature-card" style="--delay:0.1s">
+        <span class="feature-icon">✅</span>
+        <h3>Marchează progresul</h3>
+        <p>Bifează sarcinile completate și urmărește-ți evoluția zilnică.</p>
+      </div>
+      <div class="feature-card" style="--delay:0.2s">
+        <span class="feature-icon">🔒</span>
+        <h3>Organizare personală</h3>
+        <p>Fiecare utilizator are propria listă privată, accesibilă după autentificare.</p>
+      </div>
+      <div class="feature-card" style="--delay:0.3s">
+        <span class="feature-icon">🌙</span>
+        <h3>Dark & Light Mode</h3>
+        <p>Alege tema preferată pentru o experiență vizuală confortabilă.</p>
+      </div>
+      <div class="feature-card" style="--delay:0.4s">
+        <span class="feature-icon">🌐</span>
+        <h3>Multilingv</h3>
+        <p>Interfața disponibilă în română, engleză și rusă.</p>
+      </div>
+      <div class="feature-card" style="--delay:0.5s">
+        <span class="feature-icon">🚀</span>
+        <h3>Disponibil Oriunde</h3>
+        <p>Accesează TaskFlow de pe orice dispozitiv, oricând ai nevoie.</p>
+      </div>
     </div>
   </div>
 </section>
-
+ 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="section-container about-inner">
@@ -175,35 +150,27 @@ $t = $translations[$lang];
       </div>
     </div>
     <div class="about-text-block">
-      <span class="section-label"><?= $t['about_label'] ?></span>
-      <h2 class="section-title"><?= $t['about_title'] ?></h2>
-      <p><?= $t['about_text'] ?></p>
-      <a href="register.php" class="btn-primary"><?= $t['hero_btn_start'] ?> →</a>
+      <span class="section-label">Despre TaskFlow</span>
+      <h2 class="section-title">Productivitate maximă,<br>fără complicații.</h2>
+      <p>TaskFlow este o aplicație web modernă creată pentru cei care vor să fie mereu organizați. Gestionează sarcinile zilnice cu ușurință, urmărește progresul și bucură-te de o interfață clară, rapidă și sigură — oriunde te-ai afla.</p>
+      <a href="register.php" class="btn-primary">Începe acum →</a>
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <span class="nav-logo"><span class="logo-icon">✦</span> TaskFlow</span>
-    <p><?= $t['footer_copy'] ?></p>
+    <p>© 2025 TaskFlow. Toate drepturile rezervate.</p>
     <div class="footer-links">
-      <a href="index.php"><?= $t['nav_home'] ?></a>
-      <a href="contact.php"><?= $t['nav_contact'] ?></a>
-      <a href="login.php"><?= $t['nav_login'] ?></a>
+      <a href="index.php">Acasă</a>
+      <a href="contact.php">Contact</a>
+      <a href="login.php">Autentificare</a>
     </div>
   </div>
 </footer>
-
+ 
 <script src="js/script.js"></script>
 </body>
 </html>
-<?php
-// Handle language change via GET
-if (isset($_GET['lang']) && in_array($_GET['lang'], ['ro','en','ru'])) {
-  $_SESSION['lang'] = $_GET['lang'];
-  header('Location: index.php');
-  exit;
-}
-?>
