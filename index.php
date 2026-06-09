@@ -12,43 +12,10 @@ session_start();
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="index.php" class="nav-logo">
-      <span class="logo-icon">✦</span> TaskFlow
-    </a>
- 
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
- 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.php" class="active">Acasă</a></li>
-      <li><a href="#about">Despre</a></li>
-      <li><a href="#features">Funcționalități</a></li>
-      <?php if (isset($_SESSION['user'])): ?>
-        <li><a href="dashboard.php">Dashboard</a></li>
-      <?php endif; ?>
-      <li><a href="contact.php">Contact</a></li>
-      <?php if (isset($_SESSION['user'])): ?>
-        <li><a href="logout.php" class="btn-nav logout">Deconectare</a></li>
-      <?php else: ?>
-        <li><a href="login.php" class="btn-nav">Autentificare</a></li>
-        <li><a href="register.php" class="btn-nav primary">Înregistrare</a></li>
-      <?php endif; ?>
-    </ul>
- 
-    <div class="nav-controls">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="icon-sun">☀</span>
-        <span class="icon-moon">☾</span>
-      </button>
-    </div>
-  </div>
-</nav>
- 
+
+<!-- NAVBAR - inclus din fișierul separat -->
+<?php include 'php/navbar_partial.php'; ?>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
@@ -66,7 +33,7 @@ session_start();
       </a>
       <a href="#about" class="btn-ghost">Află mai mult</a>
     </div>
- 
+
     <?php if (isset($_SESSION['user'])): ?>
     <div class="user-pill">
       <span class="user-dot"></span>
@@ -74,7 +41,7 @@ session_start();
     </div>
     <?php endif; ?>
   </div>
- 
+
   <!-- Stats -->
   <div class="stats-bar">
     <div class="stat-item">
@@ -93,7 +60,7 @@ session_start();
     </div>
   </div>
 </section>
- 
+
 <!-- FEATURES -->
 <section class="features" id="features">
   <div class="section-container">
@@ -133,7 +100,7 @@ session_start();
     </div>
   </div>
 </section>
- 
+
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="section-container about-inner">
@@ -157,7 +124,7 @@ session_start();
     </div>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
@@ -170,7 +137,65 @@ session_start();
     </div>
   </div>
 </footer>
- 
+
 <script src="js/script.js"></script>
+<script>
+  // Toggle tema (dark/light)
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
+    });
+  }
+
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+
+  // Animație numere statistici
+  const statNumbers = document.querySelectorAll('.stat-num');
+  if (statNumbers.length) {
+    const animateNumbers = () => {
+      statNumbers.forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        if (target && !el.hasAttribute('data-animated')) {
+          let current = 0;
+          const increment = target / 50;
+          const update = () => {
+            current += increment;
+            if (current < target) {
+              el.textContent = Math.floor(current);
+              requestAnimationFrame(update);
+            } else {
+              el.textContent = target;
+              el.setAttribute('data-animated', 'true');
+            }
+          };
+          update();
+        }
+      });
+    };
+    
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateNumbers();
+          observer.disconnect();
+        }
+      });
+      observer.observe(hero);
+    }
+  }
+</script>
 </body>
 </html>

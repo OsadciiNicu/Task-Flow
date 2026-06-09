@@ -32,4 +32,4 @@ Aplicația permite utilizatorilor să își gestioneze sarcinile zilnice: adăug
 2. Deschide browserul la `http://localhost:8000`
 
 ## Autor
-**Osadcii Nicu** — Proiect de practică 2026
+**Osadcii Nicu** — Proiect de practică 2025

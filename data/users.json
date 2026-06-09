@@ -1,9 +1,23 @@
 [
     {
-        "id": "u_6a1fd0bd7ee868.27065082",
-        "username": "spalatu",
+        "id": "u_6a17e02f39e0e4.76380185",
+        "username": "spalayi",
         "email": "spalatu@gmail.com",
-        "password": "$2y$10$xHrm1CLAToRNUofwebGuBOJiOyNGbc85juCe2EKYe5Xa1S4YYERSC",
-        "created_at": "2026-06-03 08:59:09"
+        "password": "$2y$10$QytvoOnsgRGegRVGvQT.u.8YEadDQvMCkyc.nDbUY1.37zMGk\/iHu",
+        "created_at": "2026-05-28 08:26:55"
+    },
+    {
+        "id": "u_6a17e05a3a4028.95317429",
+        "username": "spalatu",
+        "email": "spalatu@gmsil.com",
+        "password": "123321",
+        "created_at": "2026-05-28 08:27:38"
+    },
+    {
+        "id": "u_6a1fc9c2cd1a69.74111143",
+        "username": "vania",
+        "email": "vania@gmail.com",
+        "password": "$2y$10$UoIp0kn4SVaPwk4bS5gy0uuKGGNHEHfr1deurTUrOX8P\/pG8NNmfS",
+        "created_at": "2026-06-03 08:29:22"
     }
 ]
